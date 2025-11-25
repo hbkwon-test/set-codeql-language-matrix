@@ -27,7 +27,7 @@ def build_languages_list(languages):
         if orig_lang == "c#":
             mapped_lang = "csharp"
         elif orig_lang in ["c","c++"]:
-            mapped_lang = "c-cpp"
+            mapped_lang = "cpp"
         elif orig_lang in ["typescript", "typescript"]:
             mapped_lang = "javascript-typescript"
         elif orig_lang in ["java","kotlin"]:
