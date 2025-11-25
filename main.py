@@ -7,7 +7,7 @@ token = sys.argv[1]
 endpoint = sys.argv[2]
 exclude = sys.argv[3] if len(sys.argv) > 3 else ""
 build_mode_manual_override = sys.argv[4] if len(sys.argv) > 4 else ""
-codeql_languages = ["actions", "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "typescript", "kotlin", "swift"]
+codeql_languages = ["actions", "cpp", "csharp", "go", "java", "javascript", "python", "ruby", "rust", "typescript", "kotlin", "swift", "javascript-typescript", "java-kotlin", "c-cpp"]
 
 
 # Connect to the languages API and return languages
@@ -26,14 +26,12 @@ def build_languages_list(languages):
         mapped_lang = orig_lang
         if orig_lang == "c#":
             mapped_lang = "csharp"
-        elif orig_lang == "c++":
-            mapped_lang = "cpp"
-        elif orig_lang == "c":
-            mapped_lang = "cpp"
-        elif orig_lang == "typescript":
-            mapped_lang = "javascript"
-        elif orig_lang == "kotlin":
-            mapped_lang = "java"
+        elif orig_lang in ["c","c++"]:
+            mapped_lang = "c-cpp"
+        elif orig_lang in ["typescript", "typescript"]:
+            mapped_lang = "javascript-typescript"
+        elif orig_lang in ["java","kotlin"]:
+            mapped_lang = "java-kotlin"
         elif orig_lang == "yaml":
             mapped_lang = "actions"
         
